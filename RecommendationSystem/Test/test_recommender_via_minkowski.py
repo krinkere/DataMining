@@ -22,3 +22,11 @@ class TestRecommenderViaMinkowski(unittest.TestCase):
         self.assertEqual('Chan', results[0])
         self.assertEqual('Deadmau5', results[1][0][0])
         self.assertEqual(1.0, results[1][0][1])
+
+    def test_same_user_rating(self):
+        user_in_question = "Sam"
+        distance = recommender_via_minkowski.compute_minkowski_distance(self.ratings[user_in_question], self.ratings[user_in_question], 2)
+        # Same person. hence score of 1 and distance is 0
+        self.assertEqual(0.0, distance)
+        score = recommender_via_minkowski.compute_minkowski_score(self.ratings[user_in_question], self.ratings[user_in_question], 2)
+        self.assertEqual(1.0, score)

@@ -13,6 +13,12 @@ def compute_manhattan_distance(userAratings, userBratings):
             distance += abs(userAratings[rating] - userBratings[rating])
     return distance
 
+def compute_minkowski_score(userAratings, userBratings, coefficient):
+    """Return inverted value of minkowski value. Since Minkowski returns distance, the less 
+    distance, more similar they are, the distance is less, hence the score is bigger. 
+    Add 1 so that we won't be dividing by zero."""
+    return 1 / (1 + compute_minkowski_distance(userAratings, userBratings, coefficient))
+
 def compute_minkowski_distance(userAratings, userBratings, coefficient):
     """Computes the Minkowski distance. 
     For coefficient = 1 , coefficient = 2, the Minkowski metric becomes equal to the 
@@ -26,6 +32,8 @@ def compute_minkowski_distance(userAratings, userBratings, coefficient):
             distance += pow(abs(userAratings[rating] - userBratings[rating]),coefficient)
             calculate = True
     if calculate:
+        if distance == 0: # Indicates possible same person!
+            return 0
         return pow(distance, 1/coefficient)
     else:
         return 0 # Indicates no ratings in common
