@@ -18,8 +18,16 @@ class TestRecommenderViaPearson(unittest.TestCase):
 
     def test_compute_pearson_correlation_coefficient_Angelica_Hailey(self):
         result = recommender_via_pearson.compute_pearson_correlation_coefficient(self.ratings['Angelica'], self.ratings['Hailey'])
-        self.assertEqual(0.420084025208, result)
+        self.assertEqual(0.42008402520840293, result)
 
     def test_compute_pearson_correlation_coefficient_Angelica_Jordyn(self):
         result = recommender_via_pearson.compute_pearson_correlation_coefficient(self.ratings['Angelica'], self.ratings['Jordyn'])
-        self.assertEqual(0.763974860548, result)
+        self.assertEqual(0.7639748605475432, result)
+
+    def test_compute_pearson_correlation_coefficient_Angelica_Angelica(self):
+        result = recommender_via_pearson.compute_pearson_correlation_coefficient(self.ratings['Angelica'], self.ratings['Angelica'])
+        self.assertEqual(1.0, result)
+
+    def test_recommender(self):
+        result = recommender_via_pearson.recommend('Al', self.ratings)
+        self.assertEqual('The Strokes', result[0])

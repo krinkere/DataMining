@@ -68,5 +68,9 @@ ratings = {
                       "Phoenix": 4.0, 
                       "Slightly Stoopid": 2.5, 
                       "The Strokes": 3.0
+                      },
+         "Al": {
+                      "Blues Traveler": 4.0, 
+                      "Deadmau5": 5.0
                       }
         }

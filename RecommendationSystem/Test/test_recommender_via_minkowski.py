@@ -19,9 +19,9 @@ class TestRecommenderViaMinkowski(unittest.TestCase):
         results = recommender_via_minkowski.recommend(user_in_question, ratings)
         print "List of movies that %s might like based on most similar user %s taste: %r" \
             % (user_in_question, results[0], results[1])
-        self.assertEqual('Chan', results[0])
+        self.assertEqual('Al', results[0])
         self.assertEqual('Deadmau5', results[1][0][0])
-        self.assertEqual(1.0, results[1][0][1])
+        self.assertEqual(5.0, results[1][0][1])
 
     def test_same_user_rating(self):
         user_in_question = "Sam"
@@ -30,3 +30,10 @@ class TestRecommenderViaMinkowski(unittest.TestCase):
         self.assertEqual(0.0, distance)
         score = recommender_via_minkowski.compute_minkowski_score(self.ratings[user_in_question], self.ratings[user_in_question], 2)
         self.assertEqual(1.0, score)
+
+    def test_recommender_via_minkowski_for_al(self):
+        user_in_question = "Al"
+        results = recommender_via_minkowski.recommend(user_in_question, ratings)
+        print "List of movies that %s might like based on most similar user %s taste: %r" \
+            % (user_in_question, results[0], results[1])
+        self.assertEqual('Angelica', results[0])
