@@ -2,6 +2,11 @@
 Created on Oct 16, 2015
 
 @author: alkrinker
+
+If your data is dense (almost all attributes have non-zero values) and the magnitude of the attribute values
+is important, use distance measures such as Euclidean or Manhattan. Manhattan is faster.
+Minkowski with coefficient 1 => Manhattan
+Minkowski with coefficient 2 => Euclidean
 '''
 def compute_manhattan_distance(userAratings, userBratings):
     """Computes the Manhattan distance. 

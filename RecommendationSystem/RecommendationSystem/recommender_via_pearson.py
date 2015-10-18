@@ -2,6 +2,8 @@
 Created on Oct 16, 2015
 
 @author: alkrinker
+
+If the data is subject to grade-inflation(different users maybe using different scales) use Pearson
 '''
 from math import sqrt
 
