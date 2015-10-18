@@ -16,7 +16,7 @@ class TestRecommenderViaMinkowski(unittest.TestCase):
 
     def test_recommender_via_minkowski(self):
         user_in_question = "Sam"
-        results = recommender_via_minkowski.recommend(user_in_question, ratings)
+        results = recommender_via_minkowski.recommend(user_in_question, ratings, 1)
         print "List of movies that %s might like based on most similar user %s taste: %r" \
             % (user_in_question, results[0], results[1])
         self.assertEqual('Al', results[0])
@@ -33,7 +33,7 @@ class TestRecommenderViaMinkowski(unittest.TestCase):
 
     def test_recommender_via_minkowski_for_al(self):
         user_in_question = "Al"
-        results = recommender_via_minkowski.recommend(user_in_question, ratings)
+        results = recommender_via_minkowski.recommend(user_in_question, ratings, 1)
         print "List of movies that %s might like based on most similar user %s taste: %r" \
             % (user_in_question, results[0], results[1])
         self.assertEqual('Angelica', results[0])
